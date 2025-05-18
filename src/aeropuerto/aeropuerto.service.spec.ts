@@ -33,7 +33,9 @@ describe('AeropuertoService', () => {
     }).compile();
 
     service = module.get<AeropuertoService>(AeropuertoService);
-    repository = module.get<Repository<AeropuertoEntity>>(getRepositoryToken(AeropuertoEntity));
+    repository = module.get<Repository<AeropuertoEntity>>(
+      getRepositoryToken(AeropuertoEntity),
+    );
 
     await seedDatabase();
   });
@@ -50,9 +52,9 @@ describe('AeropuertoService', () => {
   });
 
   it('findOne debe lanzar error si el aeropuerto no existe', async () => {
-    await expect(() => service.findOne("0")).rejects.toHaveProperty(
-      "message",
-      "The airport with the given id was not found"
+    await expect(() => service.findOne('0')).rejects.toHaveProperty(
+      'message',
+      'The airport with the given id was not found',
     );
   });
 
@@ -77,8 +79,8 @@ describe('AeropuertoService', () => {
     };
 
     await expect(() => service.create(invalidAirport)).rejects.toHaveProperty(
-      "message",
-      "The airport code must have exactly 3 characters"
+      'message',
+      'The airport code must have exactly 3 characters',
     );
   });
 
@@ -92,15 +94,21 @@ describe('AeropuertoService', () => {
 
   it('update debe lanzar un error si el id del aeropuerto no existe', async () => {
     await expect(() =>
-      service.update("0", { nombre: 'Invalid Update' })
-    ).rejects.toHaveProperty("message", "The airport with the given id was not found");
+      service.update('0', { nombre: 'Invalid Update' }),
+    ).rejects.toHaveProperty(
+      'message',
+      'The airport with the given id was not found',
+    );
   });
 
   it('update debe lanzar error si el código es mayor a 3 caracteres', async () => {
     const airport = aeropuertoList[0];
     await expect(() =>
-      service.update(airport.id, { codigo: 'LONG' })
-    ).rejects.toHaveProperty("message", "The airport code must have exactly 3 characters");
+      service.update(airport.id, { codigo: 'LONG' }),
+    ).rejects.toHaveProperty(
+      'message',
+      'The airport code must have exactly 3 characters',
+    );
   });
 
   it('delete debe eliminar un aeropuerto existente', async () => {
@@ -111,9 +119,9 @@ describe('AeropuertoService', () => {
   });
 
   it('delete debe lanzar error si el aeropuerto no existe', async () => {
-    await expect(() => service.delete("0")).rejects.toHaveProperty(
-      "message",
-      "The airport with the given id was not found"
+    await expect(() => service.delete('0')).rejects.toHaveProperty(
+      'message',
+      'The airport with the given id was not found',
     );
   });
 });

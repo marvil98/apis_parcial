@@ -3,12 +3,12 @@ import { AerolineaEntity } from '../../aerolinea/aerolinea.entity/aerolinea.enti
 import { AeropuertoEntity } from '../../aeropuerto/aeropuerto.entity/aeropuerto.entity';
 
 export const TypeOrmTestingConfig = () => [
- TypeOrmModule.forRoot({
-   type: 'sqlite',
-   database: ':memory:',
-   dropSchema: true,
-   entities: [AerolineaEntity, AeropuertoEntity],
-   synchronize: true,
- }),
- TypeOrmModule.forFeature([AerolineaEntity, AeropuertoEntity]),
+  TypeOrmModule.forRoot({
+    type: 'sqlite',
+    database: ':memory:',
+    dropSchema: true,
+    entities: [AerolineaEntity, AeropuertoEntity],
+    synchronize: true,
+  }),
+  TypeOrmModule.forFeature([AerolineaEntity, AeropuertoEntity]),
 ];

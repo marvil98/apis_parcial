@@ -7,9 +7,13 @@ import { AerolineaEntity } from './aerolinea/aerolinea.entity/aerolinea.entity';
 import { AeropuertoEntity } from './aeropuerto/aeropuerto.entity/aeropuerto.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AeropuertoAerolineaModule } from './aerolinea-aeropuerto/aerolinea-aeropuerto';
+import { AerolineaAeropuertoController } from './aerolinea-aeropuerto/aerolinea-aeropuerto.controller';
+import { AerolineaAeropuertoController } from './aerolinea-aeropuerto/aerolinea-aeropuerto.controller';
 
 @Module({
-  imports: [AerolineaModule, AeropuertoModule,
+  imports: [
+    AerolineaModule,
+    AeropuertoModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -23,7 +27,7 @@ import { AeropuertoAerolineaModule } from './aerolinea-aeropuerto/aerolinea-aero
     }),
     AeropuertoAerolineaModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, AerolineaAeropuertoController],
   providers: [AppService],
 })
 export class AppModule {}
