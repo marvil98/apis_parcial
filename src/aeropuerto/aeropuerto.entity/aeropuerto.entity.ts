@@ -1,9 +1,10 @@
-import { AerolineaEntity } from "src/aerolinea/aerolinea.entity/aerolinea.entity";
-import { Column, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
+import { AerolineaEntity } from "../../aerolinea/aerolinea.entity/aerolinea.entity";
+import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 
+@Entity()
 export class AeropuertoEntity {
-    @PrimaryGeneratedColumn()
-    id: number;
+    @PrimaryGeneratedColumn('uuid')
+    id: string;
   
     @Column()
     nombre: string;
