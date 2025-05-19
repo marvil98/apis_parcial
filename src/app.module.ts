@@ -8,7 +8,6 @@ import { AeropuertoEntity } from './aeropuerto/aeropuerto.entity/aeropuerto.enti
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AeropuertoAerolineaModule } from './aerolinea-aeropuerto/aerolinea-aeropuerto';
 import { AerolineaAeropuertoController } from './aerolinea-aeropuerto/aerolinea-aeropuerto.controller';
-import { AerolineaAeropuertoController } from './aerolinea-aeropuerto/aerolinea-aeropuerto.controller';
 
 @Module({
   imports: [
@@ -20,7 +19,7 @@ import { AerolineaAeropuertoController } from './aerolinea-aeropuerto/aerolinea-
       port: 5432,
       username: 'postgres',
       password: 'postgres',
-      database: 'museum',
+      database: 'aeropuerto',
       entities: [AerolineaEntity, AeropuertoEntity],
       dropSchema: true,
       synchronize: true,

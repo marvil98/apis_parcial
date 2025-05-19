@@ -1,0 +1,864 @@
+{
+	"info": {
+		"_postman_id": "b4df7d1b-625b-4cf1-a4dd-6034008d8ea4",
+		"name": "Aerolineas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43595051",
+		"_collection_link": "https://margarita-2440382.postman.co/workspace/Margarita's-Workspace~535030c0-c19b-4a61-8b45-272399f60f06/collection/43595051-b4df7d1b-625b-4cf1-a4dd-6034008d8ea4?action=share&source=collection_link&creator=43595051"
+	},
+	"item": [
+		{
+			"name": "Crear aerolínea válida",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Debe retornar 201 y un objeto creado\", function () {",
+							"  pm.response.to.have.status(201);",
+							"  const jsonData = pm.response.json();",
+							"  pm.expect(jsonData.nombre).to.eql(\"AeroPostman\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nombre\": \"AeroPostman\",\n  \"descripcion\": \"Aerolínea de prueba\",\n  \"fechaFundacion\": \"2000-01-01\",\n  \"paginaWeb\": \"https://aeropostman.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/airlines",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"airlines"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear aerolínea válida",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"AeroPostman\",\n  \"descripcion\": \"Aerolínea de prueba\",\n  \"fechaFundacion\": \"2000-01-01\",\n  \"paginaWeb\": \"https://aeropostman.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/airlines",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"airlines"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "173"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"ad-SbNtSIcbfXu3xauxZYq1sC+c8/E\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 18 May 2025 23:54:36 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"f67acef9-cf97-46cd-bdfb-2dbcaf74f339\",\n    \"nombre\": \"AeroPostman\",\n    \"descripcion\": \"Aerolínea de prueba\",\n    \"fechaFundacion\": \"2000-01-01\",\n    \"paginaWeb\": \"https://aeropostman.com\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear una aerolínea inválida",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Debe retornar 400 por fecha futura\", function () {",
+							"  pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nombre\": \"Futura\",\n  \"descripcion\": \"Fecha inválida\",\n  \"fechaFundacion\": \"2100-01-01\",\n  \"paginaWeb\": \"https://futura.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/airlines",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"airlines"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear una aerolinea inválida",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Futura\",\n  \"descripcion\": \"Fecha inválida\",\n  \"fechaFundacion\": \"2100-01-01\",\n  \"paginaWeb\": \"https://futura.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/airlines",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"airlines"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "70"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"46-PVg2W04j/f/6aXsDbcPSB+mPurw\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 May 2025 00:00:05 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 400,\n    \"message\": \"The foundation date must be in the past\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener todas las aerolíneas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Debe retornar 200 y una lista\", function () {",
+							"  pm.response.to.have.status(200);",
+							"  const jsonData = pm.response.json();",
+							"  pm.expect(jsonData.length).to.be.above(0);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/airlines",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"airlines"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener todas las aerolíneas",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/airlines",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"airlines"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "565"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"235-wlQGrFzTzW9WjBRiw+Ro3GfEuKw\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 May 2025 00:02:20 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"f67acef9-cf97-46cd-bdfb-2dbcaf74f339\",\n        \"nombre\": \"AeroPostman\",\n        \"descripcion\": \"Aerolínea de prueba\",\n        \"fechaFundacion\": \"2000-01-01T05:00:00.000Z\",\n        \"paginaWeb\": \"https://aeropostman.com\"\n    },\n    {\n        \"id\": \"58e8f383-eef5-4834-8e7c-e2184230abcb\",\n        \"nombre\": \"AeroPostman\",\n        \"descripcion\": \"Aerolínea de prueba\",\n        \"fechaFundacion\": \"2000-01-01T05:00:00.000Z\",\n        \"paginaWeb\": \"https://aeropostman.com\"\n    },\n    {\n        \"id\": \"563007cf-11fe-451f-a49a-b2a6b3913169\",\n        \"nombre\": \"AeroPostman\",\n        \"descripcion\": \"Aerolínea de prueba\",\n        \"fechaFundacion\": \"2000-01-01T05:00:00.000Z\",\n        \"paginaWeb\": \"https://aeropostman.com\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Obtener aerolínea por ID válido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Debe retornar 200 y un objeto\", function () {",
+							"  pm.response.to.have.status(200);",
+							"  const jsonData = pm.response.json();",
+							"  pm.expect(jsonData).to.have.property(\"nombre\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/airlines/f67acef9-cf97-46cd-bdfb-2dbcaf74f339",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"airlines",
+						"f67acef9-cf97-46cd-bdfb-2dbcaf74f339"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener aerolínea por ID válido",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/airlines/f67acef9-cf97-46cd-bdfb-2dbcaf74f339",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"airlines",
+								"f67acef9-cf97-46cd-bdfb-2dbcaf74f339"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "187"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"bb-xWpaGs/4B5mtOy0IwbXssHpUNKA\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 May 2025 00:04:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"f67acef9-cf97-46cd-bdfb-2dbcaf74f339\",\n    \"nombre\": \"AeroPostman\",\n    \"descripcion\": \"Aerolínea de prueba\",\n    \"fechaFundacion\": \"2000-01-01T05:00:00.000Z\",\n    \"paginaWeb\": \"https://aeropostman.com\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Aerolínea por ID no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Debe retornar 404 por ID inexistente\", function () {",
+							"  pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/airlines/f67acef9-cf97-46cd-bdfb-2dbcaf74f338",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"airlines",
+						"f67acef9-cf97-46cd-bdfb-2dbcaf74f338"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Aerolínea por ID no existente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/airlines/f67acef9-cf97-46cd-bdfb-2dbcaf74f338",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"airlines",
+								"f67acef9-cf97-46cd-bdfb-2dbcaf74f338"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "74"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4a-vvHDeZKvOEs9GVK6dTbXUoTHW8w\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 May 2025 00:45:33 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The airline with the given id was not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar aerolínea válida",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Debe actualizar\", () => { pm.response.to.have.status(200); });"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"nombre\": \"NuevaAero\", \"descripcion\": \"Actualizada\", \"fechaFundacion\": \"1995-05-05\", \"paginaWeb\": \"https://actualizada.com\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/airlines/f67acef9-cf97-46cd-bdfb-2dbcaf74f339",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"airlines",
+						"f67acef9-cf97-46cd-bdfb-2dbcaf74f339"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar aerolínea válida",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"nombre\": \"NuevaAero\", \"descripcion\": \"Actualizada\", \"fechaFundacion\": \"1995-05-05\", \"paginaWeb\": \"https://actualizada.com\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/airlines/f67acef9-cf97-46cd-bdfb-2dbcaf74f339",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"airlines",
+								"f67acef9-cf97-46cd-bdfb-2dbcaf74f339"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "162"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a2-ioIh306e8pxPNZDQgw/i1qNV3Z8\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 May 2025 00:54:03 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"bc35379b-b083-4c11-af54-87b6da1266ce\",\n    \"nombre\": \"NuevaAero\",\n    \"descripcion\": \"Actualizada\",\n    \"fechaFundacion\": \"1995-05-05\",\n    \"paginaWeb\": \"https://actualizada.com\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar aerolínea inválida",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\tpm.test(\"Debe retornar 404\", () => { pm.response.to.have.status(404); });"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"nombre\": \"NuevaAero\", \"descripcion\": \"Actualizada\", \"fechaFundacion\": \"1995-05-05\", \"paginaWeb\": \"https://actualizada.com\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/airlines/f67acef9-cf97-46cd-bdfb-2dbcaf74f350",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"airlines",
+						"f67acef9-cf97-46cd-bdfb-2dbcaf74f350"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar aerolínea inválida",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"nombre\": \"NuevaAero\", \"descripcion\": \"Actualizada\", \"fechaFundacion\": \"1995-05-05\", \"paginaWeb\": \"https://actualizada.com\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/airlines/f67acef9-cf97-46cd-bdfb-2dbcaf74f350",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"airlines",
+								"f67acef9-cf97-46cd-bdfb-2dbcaf74f350"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "74"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4a-vvHDeZKvOEs9GVK6dTbXUoTHW8w\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 May 2025 00:58:14 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The airline with the given id was not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar aerolínea por ID válido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Debe retornar 204\", () => { pm.response.to.have.status(204); });"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/airlines/f67acef9-cf97-46cd-bdfb-2dbcaf74f339",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"airlines",
+						"f67acef9-cf97-46cd-bdfb-2dbcaf74f339"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar aerolínea por ID válido",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/airlines/f67acef9-cf97-46cd-bdfb-2dbcaf74f339",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"airlines",
+								"f67acef9-cf97-46cd-bdfb-2dbcaf74f339"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 May 2025 01:00:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Eliminar aerolínea con ID inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Debe retornar 404\", () => { pm.response.to.have.status(404); });"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/airlines/f67acef9-cf97-46cd-bdfb-2dbcaf74f350",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"airlines",
+						"f67acef9-cf97-46cd-bdfb-2dbcaf74f350"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar aerolínea con ID inexistente",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/airlines/f67acef9-cf97-46cd-bdfb-2dbcaf74f350",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"airlines",
+								"f67acef9-cf97-46cd-bdfb-2dbcaf74f350"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "74"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4a-vvHDeZKvOEs9GVK6dTbXUoTHW8w\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 May 2025 01:02:15 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The airline with the given id was not found\"\n}"
+				}
+			]
+		}
+	]
+}

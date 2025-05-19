@@ -1,0 +1,848 @@
+{
+	"info": {
+		"_postman_id": "2c35a1bc-304a-4480-b346-94e931ff59be",
+		"name": "Aerolíneas-Aeropuertos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43595051",
+		"_collection_link": "https://margarita-2440382.postman.co/workspace/Margarita's-Workspace~535030c0-c19b-4a61-8b45-272399f60f06/collection/43595051-2c35a1bc-304a-4480-b346-94e931ff59be?action=share&source=collection_link&creator=43595051"
+	},
+	"item": [
+		{
+			"name": "Asociar aeropuerto a aerolínea",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Asociación exitosa\", () => { pm.response.to.have.status(200); });"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/airlines/58e8f383-eef5-4834-8e7c-e2184230abcb/airports/de8fa1d4-6a71-44a6-a28f-14476f165923",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"airlines",
+						"58e8f383-eef5-4834-8e7c-e2184230abcb",
+						"airports",
+						"de8fa1d4-6a71-44a6-a28f-14476f165923"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Asociar aeropuerto a aerolínea",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/airlines/58e8f383-eef5-4834-8e7c-e2184230abcb/airports/de8fa1d4-6a71-44a6-a28f-14476f165923",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"airlines",
+								"58e8f383-eef5-4834-8e7c-e2184230abcb",
+								"airports",
+								"de8fa1d4-6a71-44a6-a28f-14476f165923"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "326"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"146-8WZQUOAQNZLe9Llm2aJZ24So70E\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 May 2025 01:36:01 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"58e8f383-eef5-4834-8e7c-e2184230abcb\",\n    \"nombre\": \"AeroPostman\",\n    \"descripcion\": \"Aerolínea de prueba\",\n    \"fechaFundacion\": \"2000-01-01T05:00:00.000Z\",\n    \"paginaWeb\": \"https://aeropostman.com\",\n    \"aeropuertos\": [\n        {\n            \"id\": \"de8fa1d4-6a71-44a6-a28f-14476f165923\",\n            \"nombre\": \"Actualizado\",\n            \"codigo\": \"MED\",\n            \"pais\": \"Colombia\",\n            \"ciudad\": \"Medellín\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Asociar aeropuerto no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Debe fallar con 404\", () => { pm.response.to.have.status(404); });"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/airlines/58e8f383-eef5-4834-8e7c-e2184230abcb/airports/de8fa1d4-6a71-44a6-a28f-14476f165950",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"airlines",
+						"58e8f383-eef5-4834-8e7c-e2184230abcb",
+						"airports",
+						"de8fa1d4-6a71-44a6-a28f-14476f165950"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Asociar aeropuerto no existente",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/airlines/58e8f383-eef5-4834-8e7c-e2184230abcb/airports/de8fa1d4-6a71-44a6-a28f-14476f165950",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"airlines",
+								"58e8f383-eef5-4834-8e7c-e2184230abcb",
+								"airports",
+								"de8fa1d4-6a71-44a6-a28f-14476f165950"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "74"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4a-RLtwopeukeJcdNCQI8lVdlt6kCc\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 May 2025 01:37:19 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The airport with the given id was not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener aeropuertos de una aerolínea",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\tpm.test(\"Lista de aeropuertos\", () => { pm.response.to.have.status(200); });"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/airlines/58e8f383-eef5-4834-8e7c-e2184230abcb/airports",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"airlines",
+						"58e8f383-eef5-4834-8e7c-e2184230abcb",
+						"airports"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener aeropuertos de una aerolínea",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/airlines/58e8f383-eef5-4834-8e7c-e2184230abcb/airports",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"airlines",
+								"58e8f383-eef5-4834-8e7c-e2184230abcb",
+								"airports"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "124"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"7c-pbV/GVZelgbvRdvyb20LjifX19s\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 May 2025 01:39:44 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"de8fa1d4-6a71-44a6-a28f-14476f165923\",\n        \"nombre\": \"Actualizado\",\n        \"codigo\": \"MED\",\n        \"pais\": \"Colombia\",\n        \"ciudad\": \"Medellín\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Obtener aeropuerto asociado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Retorna aeropuerto\", () => { pm.response.to.have.status(200); });"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/airlines/58e8f383-eef5-4834-8e7c-e2184230abcb/airports/de8fa1d4-6a71-44a6-a28f-14476f165923",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"airlines",
+						"58e8f383-eef5-4834-8e7c-e2184230abcb",
+						"airports",
+						"de8fa1d4-6a71-44a6-a28f-14476f165923"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener aeropuerto asociado",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/airlines/58e8f383-eef5-4834-8e7c-e2184230abcb/airports/de8fa1d4-6a71-44a6-a28f-14476f165923",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"airlines",
+								"58e8f383-eef5-4834-8e7c-e2184230abcb",
+								"airports",
+								"de8fa1d4-6a71-44a6-a28f-14476f165923"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "122"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"7a-0Re6DRlV8pQJUPEUhQtOjXQPy10\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 May 2025 01:40:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"de8fa1d4-6a71-44a6-a28f-14476f165923\",\n    \"nombre\": \"Actualizado\",\n    \"codigo\": \"MED\",\n    \"pais\": \"Colombia\",\n    \"ciudad\": \"Medellín\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener aeropuerto no asociado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Debe retornar 412\", () => { pm.response.to.have.status(412); });"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/airlines/58e8f383-eef5-4834-8e7c-e2184230abcb/airports/de8fa1d4-6a71-44a6-a28f-14476f165950",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"airlines",
+						"58e8f383-eef5-4834-8e7c-e2184230abcb",
+						"airports",
+						"de8fa1d4-6a71-44a6-a28f-14476f165950"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener aeropuerto no asociado",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/airlines/58e8f383-eef5-4834-8e7c-e2184230abcb/airports/de8fa1d4-6a71-44a6-a28f-14476f165950",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"airlines",
+								"58e8f383-eef5-4834-8e7c-e2184230abcb",
+								"airports",
+								"de8fa1d4-6a71-44a6-a28f-14476f165950"
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "93"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5d-jbkfoKwgpXKuUZMH0ZNnGFjsDiI\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 May 2025 01:41:46 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 412,\n    \"message\": \"The airport with the given id is not associated to the airline\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar aeropuertos asociados",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Actualización exitosa\", () => { pm.response.to.have.status(200); });"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[ { \"id\": \"de8fa1d4-6a71-44a6-a28f-14476f165923\" }]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/airlines/58e8f383-eef5-4834-8e7c-e2184230abcb/airports",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"airlines",
+						"58e8f383-eef5-4834-8e7c-e2184230abcb",
+						"airports"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar aeropuertos asociados",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[ { \"id\": \"de8fa1d4-6a71-44a6-a28f-14476f165923\" }]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/airlines/58e8f383-eef5-4834-8e7c-e2184230abcb/airports",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"airlines",
+								"58e8f383-eef5-4834-8e7c-e2184230abcb",
+								"airports"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "249"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"f9-g/t7ow957UVx4moPBKYBuvH8+o4\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 May 2025 01:44:00 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"58e8f383-eef5-4834-8e7c-e2184230abcb\",\n    \"nombre\": \"AeroPostman\",\n    \"descripcion\": \"Aerolínea de prueba\",\n    \"fechaFundacion\": \"2000-01-01T05:00:00.000Z\",\n    \"paginaWeb\": \"https://aeropostman.com\",\n    \"aeropuertos\": [\n        {\n            \"id\": \"de8fa1d4-6a71-44a6-a28f-14476f165923\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar con aeropuerto inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Debe fallar con 404\", () => { pm.response.to.have.status(404); });"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[ { \"id\": \"de8fa1d4-6a71-44a6-a28f-14476f165959\" }]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/airlines/58e8f383-eef5-4834-8e7c-e2184230abcb/airports",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"airlines",
+						"58e8f383-eef5-4834-8e7c-e2184230abcb",
+						"airports"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar con aeropuerto inexistente",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[ { \"id\": \"de8fa1d4-6a71-44a6-a28f-14476f165959\" }]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/airlines/58e8f383-eef5-4834-8e7c-e2184230abcb/airports",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"airlines",
+								"58e8f383-eef5-4834-8e7c-e2184230abcb",
+								"airports"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "74"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4a-RLtwopeukeJcdNCQI8lVdlt6kCc\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 May 2025 01:45:22 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The airport with the given id was not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar aeropuerto asociado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Eliminación exitosa\", () => { pm.response.to.have.status(204); });"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/airlines/58e8f383-eef5-4834-8e7c-e2184230abcb/airports/de8fa1d4-6a71-44a6-a28f-14476f165923",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"airlines",
+						"58e8f383-eef5-4834-8e7c-e2184230abcb",
+						"airports",
+						"de8fa1d4-6a71-44a6-a28f-14476f165923"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar aeropuerto asociado",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/airlines/58e8f383-eef5-4834-8e7c-e2184230abcb/airports/de8fa1d4-6a71-44a6-a28f-14476f165923",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"airlines",
+								"58e8f383-eef5-4834-8e7c-e2184230abcb",
+								"airports",
+								"de8fa1d4-6a71-44a6-a28f-14476f165923"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 May 2025 01:46:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Eliminar aeropuerto no asociado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Debe retornar 412\", () => { pm.response.to.have.status(412); });"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/airlines/58e8f383-eef5-4834-8e7c-e2184230abcb/airports/de8fa1d4-6a71-44a6-a28f-14476f165950",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"airlines",
+						"58e8f383-eef5-4834-8e7c-e2184230abcb",
+						"airports",
+						"de8fa1d4-6a71-44a6-a28f-14476f165950"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar aeropuerto no asociado",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/airlines/58e8f383-eef5-4834-8e7c-e2184230abcb/airports/de8fa1d4-6a71-44a6-a28f-14476f165950",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"airlines",
+								"58e8f383-eef5-4834-8e7c-e2184230abcb",
+								"airports",
+								"de8fa1d4-6a71-44a6-a28f-14476f165950"
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "93"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5d-jbkfoKwgpXKuUZMH0ZNnGFjsDiI\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 19 May 2025 01:47:54 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 412,\n    \"message\": \"The airport with the given id is not associated to the airline\"\n}"
+				}
+			]
+		}
+	]
+}
